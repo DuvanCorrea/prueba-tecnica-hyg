@@ -1,0 +1,19 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "description": "Prueba tecnica para H&G Consultores",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DuvanCorrea/prueba-tecnica-hyg.git"
+  },
+  "author": "Duvan Felipe Correa Ardila",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DuvanCorrea/prueba-tecnica-hyg/issues"
+  },
+  "homepage": "https://github.com/DuvanCorrea/prueba-tecnica-hyg#readme"
+}
