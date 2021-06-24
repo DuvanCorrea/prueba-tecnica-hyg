@@ -100,5 +100,3 @@ CREATE TABLE IF NOT EXISTS AUDITORIAS (
     codigo_proyecto INT NOT NULL,
     fecha DATE NOT NULL
 );
-
-
