@@ -6,9 +6,9 @@ const GETONE = "SELECT P.codigo_proyecto, P.fecha_inicio, P.fecha_fin, P.objetiv
 // Aqui se haran 3 quieris ya que puede consultarse por codigo de proyecto, 
 // lider o fecha d einicio del proyecto
 // ------------------------------------------------------------------------
-const POSTWITHPROYECTO = "SELECT P.codigo_proyecto, P.fecha_inicio, P.fecha_fin, P.objetivo, P.descripccion, P.direccion, P.costo_total, P.longitud, P.latitud, L.codigo_lider, L.nombre AS nombre_lider, E.codigo_estado, E.nombre AS nombre_estado, EN.nit, EN.nombre AS nombre_entidad FROM PROYECTOS P, LIDERES L, ESTADOS E, ENTIDADES EN WHERE (codigo_proyecto=$1 AND P.LIDER_codigo_lider=L.codigo_lider AND P.ESTADOS_codigo_estado=E.codigo_estado AND P.ENTIDAD_nit=EN.nit)"
-const POSTWITHLIDER = "SELECT P.codigo_proyecto, P.fecha_inicio, P.fecha_fin, P.objetivo, P.descripccion, P.direccion, P.costo_total, P.longitud, P.latitud, L.codigo_lider, L.nombre AS nombre_lider, E.codigo_estado, E.nombre AS nombre_estado, EN.nit, EN.nombre AS nombre_entidad FROM PROYECTOS P, LIDERES L, ESTADOS E, ENTIDADES EN WHERE (P.LIDER_codigo_lider=$1 AND P.LIDER_codigo_lider=L.codigo_lider AND P.ESTADOS_codigo_estado=E.codigo_estado AND P.ENTIDAD_nit=EN.nit)"
-const POSTWITHFECHA = "SELECT P.codigo_proyecto, P.fecha_inicio, P.fecha_fin, P.objetivo, P.descripccion, P.direccion, P.costo_total, P.longitud, P.latitud, L.codigo_lider, L.nombre AS nombre_lider, E.codigo_estado, E.nombre AS nombre_estado, EN.nit, EN.nombre AS nombre_entidad FROM PROYECTOS P, LIDERES L, ESTADOS E, ENTIDADES EN WHERE (P.fecha_inicio=$1 AND P.LIDER_codigo_lider=L.codigo_lider AND P.ESTADOS_codigo_estado=E.codigo_estado AND P.ENTIDAD_nit=EN.nit)"
+const POSTWITHPROYECTO = "SELECT P.codigo_proyecto, P.fecha_inicio, P.fecha_fin, P.objetivo, P.descripccion, P.direccion, P.costo_total, P.longitud, P.latitud, L.codigo_lider, L.nombre AS nombre_lider, E.codigo_estado, E.nombre AS nombre_estado, EN.nit, EN.nombre AS nombre_entidad FROM PROYECTOS P, LIDERES L, ESTADOS E, ENTIDADES EN WHERE (codigo_proyecto=$1 AND P.LIDER_codigo_lider=L.codigo_lider AND P.ESTADOS_codigo_estado=E.codigo_estado AND P.ENTIDAD_nit=EN.nit) ORDER BY p.codigo_proyecto DESC"
+const POSTWITHLIDER = "SELECT P.codigo_proyecto, P.fecha_inicio, P.fecha_fin, P.objetivo, P.descripccion, P.direccion, P.costo_total, P.longitud, P.latitud, L.codigo_lider, L.nombre AS nombre_lider, E.codigo_estado, E.nombre AS nombre_estado, EN.nit, EN.nombre AS nombre_entidad FROM PROYECTOS P, LIDERES L, ESTADOS E, ENTIDADES EN WHERE (P.LIDER_codigo_lider=$1 AND P.LIDER_codigo_lider=L.codigo_lider AND P.ESTADOS_codigo_estado=E.codigo_estado AND P.ENTIDAD_nit=EN.nit) ORDER BY p.codigo_proyecto DESC"
+const POSTWITHFECHA = "SELECT P.codigo_proyecto, P.fecha_inicio, P.fecha_fin, P.objetivo, P.descripccion, P.direccion, P.costo_total, P.longitud, P.latitud, L.codigo_lider, L.nombre AS nombre_lider, E.codigo_estado, E.nombre AS nombre_estado, EN.nit, EN.nombre AS nombre_entidad FROM PROYECTOS P, LIDERES L, ESTADOS E, ENTIDADES EN WHERE (P.fecha_inicio=$1 AND P.LIDER_codigo_lider=L.codigo_lider AND P.ESTADOS_codigo_estado=E.codigo_estado AND P.ENTIDAD_nit=EN.nit) ORDER BY P.codigo_proyecto DESC"
 
 
 let proyectosDevolver = []
@@ -53,8 +53,6 @@ const proyectoCtrl = {
     },
 
     post: (req, res) => {
-
-        console.log(req.body)
 
         let queryActual;
         let variableBusqueda;
@@ -129,6 +127,7 @@ const proyectoCtrl = {
                         // res.send(response.rows)
                     }
                 }
+                console.log("fin try")
             } catch (error) {
                 console.log("ERROR CONSULTA BD >>>", err)
                 res.status(500)

@@ -1,7 +1,7 @@
 const client = require("../configs/database");
 
 // QUERIS
-const GET = "SELECT * FROM SEGUIMINETOS WHERE (PROYECTO_codigo_proyecto=$1)"
+const GET = "SELECT * FROM SEGUIMINETOS WHERE (PROYECTO_codigo_proyecto=$1) ORDER BY codigo_seguimiento DESC"
 const POST = "INSERT INTO SEGUIMINETOS (fecha,descripccion,avance,PROYECTO_codigo_proyecto) VALUES ($1,$2,$3,$4)"
 
 // Actualizar estado del proyecto
