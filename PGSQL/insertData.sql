@@ -115,3 +115,17 @@ VALUES
     (8, 'Pacho', 3),
     (9, 'Ernesto', 3);
 
+INSERT INTO
+    public.seguiminetos(
+        fecha,
+        descripccion,
+        avance,
+        proyecto_codigo_proyecto
+    )
+VALUES
+    ('2021-06-25', 'Seguimiento de prueba', 50, 1);
+
+INSERT INTO
+    public.fotos(ubicacion, seguimineto_codigo_seguimiento)
+VALUES
+    ('src/images/1.jpg', 1);

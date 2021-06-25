@@ -10,6 +10,7 @@ app.set("PORT", PORT)
 // Rutas
 const seguimientoRoutes = require("./routes/seguimiento.routes")
 const proyectoRoutes = require("./routes/proyecto.routes")
+const fotoRoutes = require("./routes/foto.routes")
 
 // CORS
 var whitelist = ["https://www.ferreteria-mithaes-pdv.com"];
@@ -29,7 +30,6 @@ app.use(cors(corsOptions));
 
 app.use("/api", seguimientoRoutes)
 app.use("/api", proyectoRoutes)
-
-
+app.use("/api", fotoRoutes)
 
 module.exports = app
