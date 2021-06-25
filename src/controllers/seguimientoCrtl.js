@@ -60,10 +60,28 @@ const seguimientoCtrl = {
                                 console.log("ERROR CONSULTA BD >>>", err)
                                 res.send(err)
                             } else {
-                                res.send({ mensaje: "seguimiento guardado y estado actualizado" })
+
+                                // De forma asincrona se guarda un reguistro en la
+                                // tabla de autorias
+
+                                client.query("INSERT INTO AUDITORIAS (codigo_proyecto, fecha) VALUES ($1,$2)", [PROYECTO_codigo_proyecto, fecha], (err, response) => {
+                                    try {
+                                        if (err) {
+                                            console.log("ERROR CONSULTA BD >>>", err)
+                                            res.send(err)
+                                        }
+                                        console.log("Guardo auditoria *******************************")
+                                        res.send({ mensaje: "seguimiento guardado y estado actualizado" })
+
+                                    } catch (error) {
+                                        console.log("ERROR CONSULTA BD >>>", error)
+                                    }
+                                })
+
+
                             }
                         } catch (error) {
-                            console.log("ERROR CONSULTA BD >>>", err)
+                            console.log("ERROR CONSULTA BD >>>", error)
                             res.status(500)
                             res.send(error)
                         }
