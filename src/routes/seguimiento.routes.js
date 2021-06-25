@@ -2,6 +2,6 @@ const express = require("express")
 const seguimientoCtrl = require("../controllers/seguimientoCrtl")
 const router = express.Router()
 
-router.get("/seguimiento", seguimientoCtrl.get)
+router.get("/seguimientos/:codigo_proyecto", seguimientoCtrl.get)
 
-module.exports=router;
+module.exports = router;
